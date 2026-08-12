@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FutureSkill AI</title>
+
+    <style>
+
+    .reskilling-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #2563eb;
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+.analysis-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #2563eb;
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.analysis-box h4 {
+    margin: 0 0 8px;
+    color: #1e3a8a;
+    font-size: 16px;
+}
+
+.analysis-box p {
+    margin: 6px 0;
+    line-height: 1.5;
+}
+.reskilling-box h4 {
+    margin: 0 0 8px 0;
+    color: #1e3a8a;
+    font-size: 16px;
+}
+
+.reskilling-box p {
+    margin: 5px 0;
+    line-height: 1.4;
+    font-size: 14px;
+}
+        .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #172a4d;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        header span {
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #172a4d;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card .icon {
+            font-size: 30px;
+            color: #1677ff;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #172a4d;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .section {
+            margin-top: 35px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            color: #172a4d;
+        }
+
+.skill {
+    padding: 18px 20px;
+    margin: 14px 0;
+    background: #f8fbff;
+    border-left: 5px solid #1677ff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+}
+
+.skill strong {
+    display: inline-block;
+    font-size: 17px;
+    color: #172a4d;
+    margin-bottom: 6px;
+}
+
+.skill p {
+    margin: 8px 0 0;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.skill .badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: #e8f1ff;
+    color: #1677ff;
+    font-size: 12px;
+    font-weight: 600;
+}
+.risk-level {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+.priority-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.priority-high {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.priority-medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.priority-low {
+    background: #dcfce7;
+    color: #166534;
+}
+.score-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    margin: 6px 0 12px 0;
+    overflow: hidden;
+}
+
+.score-fill {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+
+.risk-critical {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.risk-high {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.risk-moderate {
+    background: #fef3c7;
+    color: #a16207;
+}
+
+.risk-low {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+        footer {
+            margin-top: 40px;
+            background: #172a4d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        .decision-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f5f8ff;
+            border-left: 4px solid #2563eb;
+            border-radius: 8px;
+        }
+
+        .decision-box strong {
+            color: #1e3a8a;
+        }
+
+        .decision-box p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+    /* ===== NEW DASHBOARD UI ===== */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1e293b;
+}
+
+/* Main dashboard wrapper */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: #0f172a;
+    color: white;
+    padding: 25px 15px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.sidebar-logo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 35px;
+    padding-left: 10px;
+}
+
+.sidebar-logo span {
+    color: #38bdf8;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #cbd5e1;
+    padding: 13px 15px;
+    border-radius: 8px;
+    display: block;
+    transition: 0.2s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: #1e40af;
+    color: white;
+}
+
+/* Dashboard content */
+.dashboard-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Dashboard header */
+.dashboard-header {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.dashboard-header h1 {
+    margin: 0 0 8px;
+    color: #0f172a;
+}
+
+.dashboard-header p {
+    margin: 0;
+    color: #64748b;
+}
+
+/* KPI cards */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.kpi-card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.kpi-card h4 {
+    margin: 0 0 10px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.kpi-card .number {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 190px;
+    }
+
+    .dashboard-content {
+        margin-left: 190px;
+        width: calc(100% - 190px);
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        display: none;
+    }
+
+    .dashboard-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span>FutureSkill</span> AI
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="active">Dashboard</a>
+                <a href="#">Analytics</a>
+                <a href="#">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <header class="dashboard-header">
+                <h1>FutureSkill AI Dashboard</h1>
+                <p>AI Skills Intelligence Engine</p>
+            </header>
+<section class="stats">
+    <div class="stat-card">
+        <h3>Future Skills</h3>
+        <div class="stat-number" id="future-count">0</div>
+        <p>Skills expected to grow</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Declining Skills</h3>
+        <div class="stat-number" id="declining-count">0</div>
+        <p>Skills at risk of decline</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Reskilling Roles</h3>
+        <div class="stat-number" id="reskilling-count">0</div>
+        <p>Roles needing reskilling</p>
+    </div>
+    <div class="stat-card">
+        <h3>Average Skill Gap</h3>
+        <div class="stat-number" id="average-gap-score">0</div>
+        <p>Average skill gap score</p>
+    </div>
+    </section>
+        <section class="hero">
+            <h2>FutureSkill AI Dashboard</h2>
+
+            <p>
+                An AI-powered intelligence system that analyzes workforce
+                skills, identifies declining skills, highlights future skills,
+                and recommends reskilling opportunities.
+            </p>
+        </section>
+
+        <section class="cards">
+
+            <div class="card">
+                <div class="icon">🤖</div>
+                <h3>Future Skills</h3>
+                <p>
+                    Identify skills that are expected to become increasingly
+                    important in the future.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📊</div>
+                <h3>Skill Analysis</h3>
+                <p>
+                    Analyze current workforce skills and their expected impact
+                    from AI.
+                </p>
+                <div id="skill-analysis-content"></div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔄</div>
+                <h3>Reskilling</h3>
+                <p>
+                    Identify roles that may require reskilling and suggest
+                    suitable development paths.
+                </p>
+                <div id="reskilling-content"></div>
+            </div>
+
+            <div class="card">
+                <div class="icon">✓</div>
+                <h3>Decision Support</h3>
+                <p>
+                    Provide data-driven insights to support workforce planning
+                    decisions.
+                </p>
+                <div id="decision-support-content"></div>
+            </div>
+
+        </section>
+
+        <section class="section">
+
+            <h2>Future Skills</h2>
+
+            <div id="future-skills"></div>
+
+            <section class="section">
+    <h2>Declining Skills</h2>
+    <div id="declining-skills"></div>
+</section>
+
+<section class="section">
+    <h2>Reskilling Opportunities</h2>
+
+    <div id="reskilling-roles"></div>
+</section>
+
+<section class="section">
+    <h2>AI Skill Gap Analysis</h2>
+
+    <div id="skill-gaps"></div>
+</section>
+            <div class="skill">
+                <strong>Artificial Intelligence</strong>
+            </div>
+
+            <div class="skill">
+                <strong>Machine Learning</strong>
+            </div>
+
+            <div class="skill">
+                <strong>Data Science</strong>
+            </div>
+
+            <div class="skill">
+                <strong>Cybersecurity</strong>
+            </div>
+
+        </section>
+
+        <section class="section">
+
+            <h2>Reskilling Opportunities</h2>
+
+            <div class="skill">
+                <strong>Warehouse Executive → Data & AI Skills</strong>
+            </div>
+
+            <div class="skill">
+                <strong>Develop technical and analytical skills</strong>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        FutureSkill AI | AI-Powered Workforce Intelligence
+    </footer>
+
+    <script>
+async function loadDashboardData() {
+    try {
+        const response = await fetch("/api/data");
+
+        if (!response.ok) {
+            throw new Error("Failed to load API data");
+        }
+
+        const data = await response.json();
+        
+document.getElementById("future-count").textContent =
+    Object.keys(data.future_skills).length;
+
+document.getElementById("declining-count").textContent =
+    Object.keys(data.declining_skills).length;
+
+document.getElementById("reskilling-count").textContent =
+    Object.keys(data.reskilling_roles).length;
+        console.log("API DATA:", data);
+
+        // Future Skills
+        const futureSkillsSection = document.querySelector("#future-skills");
+
+        if (futureSkillsSection) {
+            futureSkillsSection.innerHTML = "";
+
+            Object.entries(data.future_skills).forEach(([skill, count]) => {
+                const item = document.createElement("div");
+                item.className = "skill";
+
+                item.innerHTML = `
+                    <strong>${skill}</strong>
+                    <span class="badge">Future Skill</span>
+                `;
+                futureSkillsSection.appendChild(item);
+            });
+        }
+
+        // Declining Skills
+        const decliningSection = document.querySelector("#declining-skills");
+
+        if (decliningSection) {
+            decliningSection.innerHTML = "";
+
+            Object.entries(data.declining_skills).forEach(([skill, count]) => {
+                const item = document.createElement("div");
+                item.className = "skill";
+                item.innerHTML = `
+                    <strong>${skill}</strong>
+                    <span class="badge">Declining</span>
+                `;
+                decliningSection.appendChild(item);
+            });
+        }
+
+        // Reskilling Roles
+        const reskillingSection = document.querySelector("#reskilling-roles");
+
+        if (reskillingSection) {
+            reskillingSection.innerHTML = "";
+
+            Object.entries(data.reskilling_roles).forEach(([role, count]) => {
+                const item = document.createElement("div");
+                item.className = "skill";
+                item.innerHTML = `
+    <strong>${role}</strong>
+    <span class="badge">Recommended Reskilling Path</span>
+    <p>Develop skills in AI-assisted inventory management, data analytics, and predictive analytics.</p>
+`;
+                reskillingSection.appendChild(item);
+            });
+        }
+
+// AI Skill Gap Analysis
+const skillGapsSection = document.querySelector("#skill-gaps");
+
+if (skillGapsSection) {
+    skillGapsSection.innerHTML = "";
+
+    try {
+        const response = await fetch("/api/skill-gaps");
+
+        if (!response.ok) {
+            throw new Error("Failed to load skill gap data");
+        }
+
+        const skillGaps = await response.json();
+        const averageGapScore =
+            skillGaps.length > 0
+                ? Math.round(
+                    skillGaps.reduce((sum, gap) => sum + Number(gap.score || 0), 0)
+                    / skillGaps.length
+                )
+                : 0;
+
+document.getElementById("average-gap-score").textContent = averageGapScore;
+
+        skillGaps.forEach((gap) => {
+            const item = document.createElement("div");
+            item.className = "skill";
+            let riskLevel;
+
+                if (gap.score >= 80) {
+                    riskLevel = "Critical";
+                } else if (gap.score >= 60) {
+                    riskLevel = "High";
+                } else if (gap.score >= 30) {
+                    riskLevel = "Moderate";
+                } else {
+                    riskLevel = "Low";
+                }
+
+            item.innerHTML = `
+                <strong>${gap.current_skill}</strong>
+                <span class="badge">${gap.ai_impact}</span>
+                <p><strong>Skill Gap Score:</strong> ${gap.score}/100</p>
+                <div class="score-bar">
+                    <div class="score-fill" style="width: ${gap.score}%;"></div>
+                </div>
+                <p><strong>Risk Level:</strong> <span class="risk-level risk-${String(riskLevel).toLowerCase()}">${riskLevel}</span></p>
+                <p><strong>Future Skill:</strong> ${gap.future_skill}</p>
+                <p><strong>Priority:</strong>
+                    <span class="priority-badge priority-${String(gap.priority).toLowerCase()}">
+                        ${gap.priority}
+                    </span>
+                </p>
+                <p><strong>Recommendation:</strong> ${gap.recommendation}</p>
+            `;
+
+            skillGapsSection.appendChild(item);
+        });
+        const skillAnalysisContent =
+    document.getElementById("skill-analysis-content");
+
+if (skillAnalysisContent) {
+    skillAnalysisContent.innerHTML = "";
+
+    skillGaps.forEach((gap) => {
+        const analysis = document.createElement("div");
+        analysis.className = "analysis-box";
+
+        analysis.innerHTML = `
+            <h4>${gap.current_skill}</h4>
+            <p><strong>AI Impact:</strong> ${gap.ai_impact}</p>
+            <p><strong>Skill Gap:</strong> ${gap.score}/100</p>
+            <p><strong>Future Skill:</strong> ${gap.future_skill}</p>
+        `;
+
+        skillAnalysisContent.appendChild(analysis);
+    });
+}
+        const decisionSupport = document.getElementById("decision-support-content");
+
+if (decisionSupport && skillGaps.length > 0) {
+    const highestGap = skillGaps.reduce((highest, current) =>
+        current.score > highest.score ? current : highest
+    );
+
+    decisionSupport.innerHTML = `
+        <div class="decision-box">
+            <strong>Priority Recommendation</strong>
+            <p>
+                Focus on <strong>${highestGap.current_skill}</strong>
+                because it has the highest skill gap score of
+                <strong>${highestGap.score}/100</strong>.
+            </p>
+            <p>
+                Recommended future skill:
+                <strong>${highestGap.future_skill}</strong>
+            </p>
+        </div>
+    `;
+}
+const reskillingContent = document.getElementById("reskilling-content");
+
+if (reskillingContent) {
+    reskillingContent.innerHTML = "";
+
+    const reskillingRoles = skillGaps.filter(
+        (gap) => gap.score >= 80
+    );
+
+    reskillingRoles.forEach((gap) => {
+        const role = document.createElement("div");
+        role.className = "reskilling-box";
+
+        role.innerHTML = `
+            <h4>${gap.current_skill}</h4>
+            <p><strong>Skill Gap:</strong> ${gap.score}/100</p>
+            <p><strong>Future Skill:</strong> ${gap.future_skill}</p>
+            <p><strong>Priority:</strong> ${gap.priority}</p>
+            <p><strong>Recommendation:</strong> ${gap.recommendation}</p>
+        `;
+
+        reskillingContent.appendChild(role);
+    });
+}
+    } catch (error) {
+        console.error("Skill Gap API Error:", error);
+
+        skillGapsSection.innerHTML =
+            "<p>Unable to load AI skill gap analysis.</p>";
+    }
+}
+
+    } catch (error) {
+        console.error("API Error:", error);
+    }
+}
+loadDashboardData();
+</script>
+</body>
+</html>

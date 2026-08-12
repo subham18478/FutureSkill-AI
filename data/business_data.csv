@@ -1,0 +1,11 @@
+industry,process,activity,role,current_skill,ai_impact,future_skill
+Pharmaceutical Supply Chain,Inventory Management,Stock level monitoring,Warehouse Executive,Inventory Management,AI-Augmented,AI-Assisted Inventory Analytics
+Pharmaceutical Supply Chain,Inventory Management,Stock counting,Warehouse Executive,Manual Stock Counting,Declining,AI-Assisted Inventory Monitoring
+Pharmaceutical Supply Chain,Order Processing,Order entry,Warehouse Executive,Data Entry,Declining,AI Workflow Supervision
+Pharmaceutical Supply Chain,Procurement,Vendor evaluation,Procurement Officer,Vendor Management,AI-Augmented,AI-Based Supplier Analytics
+Pharmaceutical Supply Chain,Procurement,Demand forecasting,Supply Chain Analyst,Demand Forecasting,Increasing,AI Demand Forecasting
+Pharmaceutical Supply Chain,Quality Control,Quality inspection,Quality Analyst,Quality Assurance,AI-Augmented,AI Quality Analytics
+Pharmaceutical Supply Chain,Logistics,Delivery planning,Logistics Coordinator,Route Planning,AI-Augmented,AI Route Optimization
+Pharmaceutical Supply Chain,Warehouse Management,Warehouse scheduling,Warehouse Manager,Operations Management,Increasing,AI Operations Optimization
+Pharmaceutical Supply Chain,Production Planning,Production scheduling,Production Supervisor,Production Planning,AI-Augmented,AI Production Optimization
+Pharmaceutical Supply Chain,Data Analysis,Supply chain reporting,Data Analyst,Data Analysis,Increasing,AI-Powered Predictive Analytics
