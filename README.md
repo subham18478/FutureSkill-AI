@@ -1,3 +1,4 @@
+
 # FutureSkill AI
 
 FutureSkill AI is an AI-powered workforce intelligence application designed to analyze current workforce skills, identify skill gaps caused by AI adoption, recommend future skills, and support reskilling decisions.
@@ -46,3 +47,7 @@ Priority: High
 - HTML
 - CSS
 - JavaScript
+
+# FutureSkill-AI
+
+AI-powered workforce intelligence and skill gap analysis platform.
